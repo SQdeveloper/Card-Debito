@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;1,100&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    position: relative;
+    background-color: #131322;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container::before, .container::after {
+    content: "";
+    position: absolute;
+    background-color: red;
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+    background: linear-gradient(90deg,#8a099e, white);
+}
+
+@keyframes float-before {
+    from {
+        transform: translate(8rem, 7rem);
+    }
+    to {
+        transform: translate(8rem, 9rem);
+    }
+}
+
+@keyframes float-after {
+    from {
+        transform: translate(-8rem, -7rem);
+    }
+    to {
+        transform: translate(-8rem, -9rem);
+    }
+}
+
+.container::before {
+    transform: translate(8rem, 8rem);
+    animation: float-before 2s infinite alternate;
+}
+
+.container::after {
+    transform: translate(-8rem, -8rem);
+    animation: float-after 2s infinite alternate;
+}
+
+.cont-card {
+    position: relative;
+    width: 400px;
+    height: 230px;
+    transition: transform .8s;
+    z-index: 1;
+    transform-style: preserve-3d;
+}
+
+.cont-card:hover {
+    transform: rotateY(180deg);
+}
+
+.card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255,255,255, .1);
+    border-radius: 15px;
+    backdrop-filter: blur(25px);
+    backface-visibility: hidden;
+}
+
+.card.front-face header {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 1.7rem auto;
+    margin-bottom: 2rem;
+}
+
+.card.front-face img {
+    width: 40px;
+}
+
+.card.front-face .details {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 90%;
+    margin: auto;
+    color: rgb(247, 243, 243);
+}
+
+.card.front-face .name-number .number{
+    margin: .4rem 0 2rem 0;
+}
+
+.card.front-face .cont-logo {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: rgb(250, 245, 245);
+}
+
+.card.back-face {
+    display: flex;
+    flex-direction: column;
+    transform: rotateY(180deg);
+    color: white;
+}
+
+.card.back-face h6 {
+    margin: auto;
+    width: 90%;
+}
+
+.card.back-face .barra-black {
+    background-color: black;
+    width: 100%;
+    height: 2.5rem;
+}
+
+.card.back-face .barra-clave {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: white;
+    color: black;
+    height: 2rem;
+    width: 81%;
+    border-radius: 5px;
+    margin: auto;
+    background: repeating-linear-gradient(white, white 3px ,#ddd 0px, #ddd 7px);
+    transform: translateX(-1.1rem);
+}
+
+.card.back-face .barra-clave i {
+    margin-right: -2rem;
+    background-color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    padding-left: .2rem;
+    padding-right: .2rem;
+}
+
+.card.back-face h6:last-child {
+    margin-top: 0;
+}
+
+@media screen and (max-width:520px) {
+    .container::before {
+        transform: translate(0, 8rem);
+        animation: none;
+        right: 1rem;
+    }
+    .container::after {
+        transform: translate(0, -8rem);
+        animation: none;
+        left: 1rem;
+    }
+}
+
+@media screen and (max-width:440px) {
+    .cont-card {
+        width: 350px;
+    }
+}
